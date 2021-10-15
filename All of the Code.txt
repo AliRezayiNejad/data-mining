@@ -1,0 +1,609 @@
+seeds <- read.csv("D:\\Daneshga\\T8\\Amini\\Datasets\\Iris Alternatives\\Wheat Seeds Dataset\\Final Refined CSV.csv")
+
+mean(seeds[["Area"]])
+mean(seeds[["Perimeter"]])
+mean(seeds[["Compactness"]])
+mean(seeds[["Length.of.Kernel"]])
+mean(seeds[["Width.of.Kernel"]])
+mean(seeds[["Asymmetry.Coefficient"]])
+mean(seeds[["Length.of.Kernel.Groove"]])
+
+summary(seeds)
+cols <- c("Area", "Perimeter", "Compactness", "Length.of.Kernel", "Width.of.Kernel", "Asymmetry.Coefficient", "Length.of.Kernel.Groove");summary(seeds[cols])
+
+median(seeds[,2])
+median(seeds[,3])
+median(seeds[,4])
+median(seeds[,5])
+median(seeds[,6])
+median(seeds[,7])
+median(seeds[,8])
+
+All_Modes <- function(x) {
+  unique_x <- unique(x)
+  tabulate_x <- tabulate(match(x, unique_x))
+  unique_x[tabulate_x == max(tabulate_x)]
+}
+
+All_Modes(seeds$Area)
+All_Modes(seeds$Perimeter)
+All_Modes(seeds$Compactness)
+All_Modes(seeds$Length.of.Kernel)
+All_Modes(seeds$Width.of.Kernel)
+All_Modes(seeds$Asymmetry.Coefficient)
+All_Modes(seeds$Length.of.Kernel.Groove)
+library(modeest)
+mlv((seeds[["Area"]]), method = "mfv")
+Mode <- function(x) {
+ 	unique_x <- unique(x) 
+ 	unique_x [which.max(tabulate(match(x, unique_x)))] 
+}
+Mode(seeds$Area)
+
+library(directlabels)
+midrange(seeds$Area)
+midrange(seeds$Perimeter)
+midrange(seeds$Compactness)
+midrange(seeds$Length.of.Kernel)
+midrange(seeds$Width.of.Kernel)
+midrange(seeds$Asymmetry.Coefficient)
+midrange(seeds$Length.of.Kernel.Groove)
+
+max(seeds$Area, na.rm=TRUE) - min(seeds$Area, na.rm=TRUE)
+max(seeds$Perimeter, na.rm=TRUE) - min(seeds$Perimeter, na.rm=TRUE)
+max(seeds$Compactness, na.rm=TRUE) - min(seeds$Compactness, na.rm=TRUE)
+max(seeds$Length.of.Kernel, na.rm=TRUE) - min(seeds$Length.of.Kernel, na.rm=TRUE)
+max(seeds$Width.of.Kernel, na.rm=TRUE) - min(seeds$Width.of.Kernel, na.rm=TRUE)
+max(seeds$Asymmetry.Coefficient, na.rm=TRUE) - min(seeds$Asymmetry.Coefficient, na.rm=TRUE)
+max(seeds$Length.of.Kernel.Groove, na.rm=TRUE) - min(seeds$Length.of.Kernel.Groove, na.rm=TRUE)
+
+quantile(seeds$Area)
+quantile(seeds$Perimeter)
+quantile(seeds$Compactness)
+quantile(seeds$Length.of.Kernel)
+quantile(seeds$Width.of.Kernel)
+quantile(seeds$Asymmetry.Coefficient)
+quantile(seeds$Length.of.Kernel.Groove)
+
+quantile(seeds$Area, c(.25, .75, .80))
+quantile(seeds$Perimeter, c(.11, .68, .98))
+quantile(seeds$Compactness, c(.32, .43, .23))
+quantile(seeds$Length.of.Kernel, c(.96, .53, .13))
+quantile(seeds$Width.of.Kernel, c(.43, .87, .76))
+quantile(seeds$Asymmetry.Coefficient, c(.78, .55, .28))
+quantile(seeds$Length.of.Kernel.Groove, c(.64, .62, .33))
+
+quantile(seeds$Perimeter, c(0.125,0.375,0.625,0.875))
+
+quantile(seeds$Area, c(.75)) - quantile(seeds$Area, c(.25))
+IQR(seeds$Area) 
+
+IQR(seeds$Perimeter)
+IQR(seeds$Compactness)
+IQR(seeds$Length.of.Kernel)
+IQR(seeds$Width.of.Kernel)
+IQR(seeds$Asymmetry.Coefficient)
+IQR(seeds$Length.of.Kernel.Groove)
+
+fivenum(seeds$Area)
+fivenum(seeds$Perimeter)
+fivenum(seeds$Compactness)
+fivenum(seeds$Length.of.Kernel)
+fivenum(seeds$Width.of.Kernel)
+fivenum(seeds$Asymmetry.Coefficient)
+fivenum(seeds$Length.of.Kernel.Groove)
+
+boxplot(seeds$Area)
+boxplot(seeds$Perimeter)
+boxplot(seeds$Compactness)
+boxplot(seeds$Length.of.Kernel)
+boxplot(seeds$Width.of.Kernel)
+boxplot(seeds$Asymmetry.Coefficient)
+boxplot(seeds$Length.of.Kernel.Groove)
+
+boxplot(seeds$Area,
+main = "KIAU - DM - Ali Rezaeinejad",
+xlab = "Parts Per Billion",
+ylab = "Ozone",
+col = "orange",
+border = "brown",
+horizontal = TRUE,
+notch = TRUE
+)
+
+boxplot(seeds$Area, seeds$Perimeter, seeds$Compactness, seeds$Length.of.Kernel, seeds$Width.of.Kernel, seeds$Asymmetry.Coefficient, seeds$Length.of.Kernel.Groove)
+
+boxplot(seeds$Area, seeds$Perimeter, seeds$Compactness, seeds$Length.of.Kernel, seeds$Width.of.Kernel, seeds$Asymmetry.Coefficient, seeds$Length.of.Kernel.Groove,
+main = "All in One - KIAU - 960184156",
+names = c("Area", "Perimeter", "Compactness", "Length of Kernel", "Width of Kernel", "Asymmetry Coefficient", "Length of Kernel Groove"),
+las = 2,
+col = c("orange","red"),
+border = "brown",
+horizontal = TRUE,
+notch = TRUE)
+
+print ("Variances in Order:")
+var(seeds$Area)
+var(seeds$Perimeter)
+var(seeds$Compactness)
+var(seeds$Length.of.Kernel)
+var(seeds$Width.of.Kernel)
+var(seeds$Asymmetry.Coefficient)
+var(seeds$Length.of.Kernel.Groove)
+print ("Standard Deviations in Order:")
+sd(seeds$Area)
+sd(seeds$Perimeter)
+sd(seeds$Compactness)
+sd(seeds$Length.of.Kernel)
+sd(seeds$Width.of.Kernel)
+sd(seeds$Asymmetry.Coefficient)
+sd(seeds$Length.of.Kernel.Groove)
+
+qqnorm(seeds$Area, main = "Area", )
+qqline(seeds$Area, 
+       col = "red")
+qqnorm(seeds$Perimeter, main = "Perimeter", )
+qqline(seeds$Perimeter, 
+       col = "red")
+qqnorm(seeds$Compactness, main = "Compactness", )
+qqline(seeds$Compactness, 
+       col = "red")
+qqnorm(seeds$Length.of.Kernel, main = "Length.of.Kernel", )
+qqline(seeds$Length.of.Kernel, 
+       col = "red")
+qqnorm(seeds$Width.of.Kernel, main = "Width.of.Kernel", )
+qqline(seeds$Width.of.Kernel, 
+       col = "red")
+qqnorm(seeds$Asymmetry.Coefficient, main = "Asymmetry.Coefficient", )
+qqline(seeds$Asymmetry.Coefficient, 
+       col = "red")
+qqnorm(seeds$Length.of.Kernel.Groove, main = "Length.of.Kernel.Groove", )
+qqline(seeds$Length.of.Kernel.Groove, 
+       col = "red")
+
+hist(seeds$Area, main = "KIAU 99-00", xlab="Area", col="darkmagenta")
+hist(seeds$Perimeter, main = "KIAU 99-00", xlab="Perimeter", col="darkred")
+hist(seeds$Compactness, main = "KIAU 99-00", xlab="Compactness", col="blue")
+hist(seeds$Length.of.Kernel, main = "KIAU 99-00", xlab="Length of Kernel", col="darkgreen")
+hist(seeds$Width.of.Kernel, main = "KIAU 99-00", xlab="Width of Kernel", col="darkorange")
+hist(seeds$Asymmetry.Coefficient, main = "KIAU 99-00", xlab="Asymmetry Coefficient")
+hist(seeds$Length.of.Kernel.Groove, main = "KIAU 99-00", xlab="Length of Kernel Groove", col="pink")
+
+barplot(seeds$Area, main = "Data Mining - AR", xlab="Area", col="darkmagenta")
+barplot(seeds$Perimeter, xlab="Perimeter", col="darkred")
+barplot(seeds$Compactness, xlab="Compactness", col="blue")
+barplot(seeds$Length.of.Kernel, xlab="Length of Kernel", col="darkgreen")
+barplot(seeds$Width.of.Kernel, xlab="Width of Kernel", col="darkorange")
+barplot(seeds$Asymmetry.Coefficient, xlab="Asymmetry Coefficient")
+barplot(seeds$Length.of.Kernel.Groove, xlab="Length of Kernel Groove", col="pink")
+
+plot(seeds$Area, seeds$Perimeter,
+     main = "Scatterplot of Area vs Perimeter",
+     xlab = "Area (in mm^2)",
+     ylab = "Perimeter (in mm)", col="darkred")
+     abline(lm(seeds$Perimeter ~ seeds$Area))
+plot(seeds$Length.of.Kernel, seeds$Width.of.Kernel,
+     main = "Scatterplot of Length of Kernel vs Width of Kernel",
+     xlab = "Length of Kernel (in mm)",
+     ylab = "Width of Kernel (in mm)", col="darkorange")
+     abline(lm(seeds$Width.of.Kernel ~ seeds$Length.of.Kernel))
+plot(seeds$Length.of.Kernel, seeds$Length.of.Kernel.Groove,
+     main = "Scatterplot of Length of Kernel vs Length of Kernel Groove",
+     xlab = "Length of Kernel (in mm)",
+     ylab = "Length of Kernel Groove (in mm)", col="darkgreen")
+     abline(lm(seeds$Length.of.Kernel.Groove ~ seeds$Length.of.Kernel))
+plot(seeds$Compactness, seeds$Perimeter,
+     main = "Scatterplot of Compactness vs Perimeter",
+     xlab = "Compactness",
+     ylab = "Perimeter (in mm)", col="darkcyan")
+     abline(lm(seeds$Perimeter ~ seeds$Compactness))
+	 
+	 
+
+
+seeds=read.csv("D:\\Daneshga\\T8\\Amini\\Datasets\\Iris Alternatives\\Wheat Seeds Dataset\\Final Refined CSV.csv")
+#seeds$Type[which(seeds$Seedtype..Class.==1)]="Kama"
+#seeds$Type[which(seeds$Seedtype..Class.==2)]="Rosa"
+#seeds$Type[which(seeds$Seedtype..Class.==3)]="Canadian"
+seeds$Type = factor(seeds$Seedtype..Class.)
+#summary (seeds)
+
+#dist(seeds$Area, method = "euclidean", diag = FALSE, upper = FALSE, p = 2)
+#emptyMatrix
+rdist(seeds$Area, seeds$Perimeter)
+
+#dist(seeds$Area, method = "euclidean", diag = FALSE, upper = FALSE, p = 2)
+#emptyMatrix
+dist(seeds$Area, seeds$Perimeter, method = "euclidean")
+
+library(philentropy)
+dist(seeds, method = "euclidean", diag = TRUE, upper = FALSE, p = 2)
+#distance(seeds, method = "euclidean")
+#stats::dist(seeds, method = "euclidean")
+#getDistMethods()
+#distance(seeds, method = "manhattan")
+#dist(seeds, method = "manhattan", diag = TRUE, upper = FALSE)
+#dist(seeds$Perimeter, method = "manhattan", diag = TRUE, upper = FALSE)
+manhattan_dist <- function(a, b){
+     dist <- abs(a-b)
+     dist <- sum(dist)
+     return(dist)
+}
+manhattan_dist(seeds$Area, seeds$Perimeter)
+
+dist(seeds$Compactness, method = "maximum", diag = TRUE, upper = FALSE)
+euclidean(seeds$Compactness, seeds$Perimeter, testNA = FALSE)
+
+jaccard(seeds$Length.of.Kernel, seeds$Width.of.Kernel, testNA = FALSE)
+distance(seeds, method = "jaccard")
+
+library(caret)
+daisy(seeds, metric = c("euclidean"),
+      stand = FALSE)
+	  
+library(ggplot2)
+library(lattice)
+library(caret)
+preproc2 <- preProcess(seeds, method=c("range"))
+norm2 <- predict(preproc2, seeds)
+#summary(norm2)
+cols <- c("Area", "Perimeter", "Compactness", "Length.of.Kernel", "Width.of.Kernel", "Asymmetry.Coefficient", "Length.of.Kernel.Groove");
+summary(norm2[cols])
+
+library(plotly)
+library(heatmaply)
+heatmaply(
+  normalize(seeds),
+  main = "Min-Max Data Normalization"
+)
+
+
+heatmaply(
+  scale(seeds),
+  main = "Z-Score Data Normalization"
+)
+
+
+seeds <- read.csv("D:\\Daneshga\\T8\\Amini\\Datasets\\Iris Alternatives\\Wheat Seeds Dataset\\Final Refined CSV.csv")
+cols <- c("Area", "Perimeter", "Compactness", "Length.of.Kernel", "Width.of.Kernel", "Asymmetry.Coefficient", "Length.of.Kernel.Groove");
+scale(seeds[cols], center = TRUE, scale = TRUE)
+
+""" (python code) from sklearn.metrics.pairwise import euclidean_distances
+import pandas as pd
+seeds = pd.read_csv (r'D:\\Daneshga\T8\Amini\Datasets\Iris Alternatives\Wheat Seeds Dataset\Final Refined CSV.csv')
+euclidean_distances(seeds)"""
+
+
+
+
+seeds <- read.csv("D:\\Daneshga\\T8\\Amini\\Datasets\\Iris Alternatives\\Wheat Seeds Dataset\\Final Refined CSV.csv")
+library(cluster)
+library(purrr)
+library(ggplot2)
+library(factoextra)
+
+agnes(seeds, diss = FALSE, metric = "euclidean",
+      stand = FALSE, method = "complete",)
+# Compute with agnes
+hc2 <- agnes(seeds, method = "complete")
+
+# Agglomerative coefficient
+hc2$ac
+
+# methods to assess
+m <- c( "average", "single", "complete", "ward")
+names(m) <- c( "average", "single", "complete", "ward")
+
+# function to compute coefficient
+ac <- function(x) {
+  agnes(seeds, method = x)$ac
+}
+
+map_dbl(m, ac)
+##   average    single  complete      ward 
+## 0.7379371 0.6276128 0.8531583 0.9346210
+
+hc3 <- agnes(seeds, method = "ward")
+pltree(hc3, cex = 0.6, hang = -1, main = "Dendrogram of agnes") 
+
+sub_grp <- cutree(hc3, k = 4)
+fviz_cluster(list(data = seeds, cluster = sub_grp))
+
+# Cut agnes() tree into 4 groups
+hc_a <- agnes(seeds, method = "ward")
+cutree(as.hclust(hc_a), k = 4)
+
+plot(hc3)
+
+
+
+                                             GZL
+seeds <- read.csv("D:\\Daneshga\\T8\\Amini\\Datasets\\Iris Alternatives\\Wheat Seeds Dataset\\Final Refined CSV.csv")
+library(ggplot2)
+library(factoextra)
+library(dplyr)
+library(forcats)
+ggplot(data = seeds, mapping = aes(x = seeds$Seedtype..Class.)) + geom_bar()
+ggplot(data = seeds, mapping = aes(x = seeds$Compactness)) + geom_bar()
+                                             GZL
+clusgap
+
+gap_stat <- clusGap(seeds, FUN = kmeans, nstart = 30, K.max = 24, B = 50)
+fviz_gap_stat(gap_stat)
+											 
+											 
+											 
+											 
+											 
+											 
+											 
+mypr <- prcomp(seeds[,2:8], center = T, scale = T)
+summary(mypr)
+
+library(ggplot2)
+library(factoextra)
+fviz_eig(mypr, addlabels = TRUE, ylim = c(0, 75))
+
+var <- get_pca_var(mypr)
+var
+
+head(var$cos2, 4)
+
+install.packages('corrplot')
+
+library(corrplot)
+corrplot(var$cos2, is.corr=FALSE)
+
+fviz_pca_biplot(mypr, 
+                # Fill individuals by groups
+                geom.ind = as.factor("point"),
+                addEllipses = TRUE, label = "var",
+                pointshape = 21,
+                pointsize = 2.5,
+                fill.ind = as.factor(seeds$Seedtype..Class.),
+                col.ind = as.factor("black"),
+                # Color variable by groups
+                col.var = factor(c("area", "perimeter", "compactness", "lengthofkernel",
+                                   "widthofkernel", "asymmetrycoefficient", "asymmetrycoefficient")),
+                
+                
+                legend.title = list(fill = "Type of seed", color = "Clusters"),
+                repel = TRUE        # Avoid label overplotting
+)+ggpubr::fill_palette("jco")+      # Indiviual fill color
+  ggpubr::color_palette("npg")      # Variable colors
+
+comp <- data.frame(mypr$x[,1:3])
+
+fviz_nbclust(comp, kmeans, method = "silhouette") + theme_classic()
+
+install.packages("RColorBrewer")
+
+library(RColorBrewer)
+k <- kmeans(comp, 2, nstart=25, iter.max=1000)
+palette(alpha(brewer.pal(9,'Set1'), 0.5))
+plot(comp, col=k$clust, pch=16)
+
+install.packages("scatterplot3d") # Install
+library("scatterplot3d") # load
+scatterplot3d(comp[,1:3], pch=16, color = k$clust,
+              grid = TRUE, box = FALSE)
+
+summary(k)
+
+table(k$cluster)
+
+
+seeds <- read.csv("D:\\Daneshga\\T8\\Amini\\Datasets\\Iris Alternatives\\Wheat Seeds Dataset\\Final Refined CSV.csv")
+str(seeds)
+head(seeds)
+#data(seeds)
+
+# Installing Packages
+install.packages("fpc")  
+# Loading package
+library(fpc)
+  
+# Remove label form dataset
+seeds_1 <- seeds[-9]
+seeds_2 <- seeds_1[-1]
+
+# Fitting DBScan clustering Model 
+# to training dataset
+set.seed(220)  # Setting seed
+Dbscan_cl <- dbscan(seeds_2, eps = 0.45, MinPts = 5)
+Dbscan_cl
+  
+# Checking cluster
+Dbscan_cl$cluster
+  
+# Table
+table(Dbscan_cl$cluster, seeds$Seedtype..Class.)
+  
+# Plotting Cluster
+plot(Dbscan_cl, seeds_2, main = "DBScan")
+
+install.packages("dbscan")
+
+library(ggplot2)
+library(factoextra)
+data("seeds")
+df <- seeds[, 2:8]
+set.seed(123)
+km.res <- kmeans(seeds, 5, nstart = 25)
+fviz_cluster(km.res, seeds, frame = FALSE, geom = "point")
+
+# Load the data 
+data("multishapes", package = "factoextra")
+df <- multishapes[, 1:2]
+
+# Compute DBSCAN using fpc package
+library("fpc")
+set.seed(123)
+dbsample <- fpc::dbscan(df, eps = 0.15, MinPts = 5)
+
+# Plot DBSCAN results
+library("factoextra")
+fviz_cluster(dbsample, data = df, stand = FALSE,
+             ellipse = FALSE, show.clust.cent = FALSE,
+             geom = "point",palette = "jco", ggtheme = theme_classic())
+
+dbs <- fpc::dbscan(seeds, eps = 0.15, MinPts = 5)
+fviz_cluster(dbs, data = seeds, stand = FALSE,
+             ellipse = FALSE, show.clust.cent = FALSE,
+             geom = "point",palette = "jco", ggtheme = theme_classic())
+			 
+			 
+seeds <- read.csv("D:\\Daneshga\\T8\\Amini\\Datasets\\Iris Alternatives\\Wheat Seeds Dataset\\Book1.csv")
+seeds_1 <- seeds[-8]
+#library("dbscan")
+#dbscan(seeds_1, eps = 0.8, minPts = 5)
+# Compute DBSCAN using fpc package
+library("fpc")
+dbs <- fpc::dbscan(seeds_1, eps = 0.8, MinPts = 5)
+fviz_cluster(dbs, data = seeds_1, stand = FALSE,
+             ellipse = FALSE, show.clust.cent = FALSE,
+             geom = "point",palette = "jco", ggtheme = theme_classic())
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+seeds <- read.csv("D:\\Daneshga\\T8\\Amini\\Datasets\\Iris Alternatives\\Wheat Seeds Dataset\\Book1.csv")
+
+#seeds_1 <- seeds[-8]
+
+library (vctrs)
+library (cluster)
+library (ggplot2)
+library (factoextra)
+
+seeds$Seedtype..Class. <- as.factor(seeds$Seedtype..Class.)
+levels(seeds$Seedtype..Class.) <- c(3,2,1)
+x <- function(x){ (x-min(x))/(max(x)-min(x))}
+seeds$Seedtype..Class. <- as.numeric(as.character(seeds$Seedtype..Class.))
+seeds$Seedtype..Class. <- x(seeds$Seedtype..Class.)
+seeds$Seedtype..Class. <- format(round(seeds$Seedtype..Class., 2))
+seeds$Seedtype..Class. <- as.double(seeds$Seedtype..Class.)
+dist <- dist(seeds, diag = TRUE)
+dndgram <- hclust(dist)
+plot(dndgram, hang = -1, cex = 0.6)
+#dbs <- dbscan(seeds_1, eps = 0.8, MinPts = 5)
+#fviz_silhouette(dbs)
+#silhouette(dbs)
+
+gap_stat <- clusGap(seeds, FUN = hcut, nstart = 25, K.max = 10, B = 60)
+print(gap_stat)
+
+fviz_gap_stat(gap_stat)
+
+plot(dndgram, hang = -1, cex = 0.6)
+rect.hclust(dndgram, k = 3, border = 2:5)
+
+gap_stat <- clusGap(seeds, FUN = kmeans, nstart = 25, K.max = 10, B = 50)
+print(gap_stat, method = "firstmax")
+
+fviz_gap_stat(gap_stat)
+
+result <- kmeans( seeds, 3 , nstart = 25)
+print(result)
+
+fviz_cluster(result, data = seeds)
+
+s <- silhouette(result$cluster, dist)
+fviz_silhouette(s)
+
+s <- silhouette(cutree(dndgram, 3), dist)
+fviz_silhouette(s)
+
+
+
+
+
+
+
+
+Classification, At last :) arrived here after five full days, ostad, if you're reading this i really need the nomre :))
+
+seeds <- read.csv("D:\\Daneshga\\T8\\Amini\\Datasets\\Iris Alternatives\\Wheat Seeds Dataset\\Book1.csv")
+
+seeds$Seedtype..Class.[which(seeds$Seedtype..Class.==1)]="Kama"
+seeds$Seedtype..Class.[which(seeds$Seedtype..Class.==2)]="Rosa"
+seeds$Seedtype..Class.[which(seeds$Seedtype..Class.==3)]="Canadian"
+seeds$Seedtype..Class. = factor(seeds$Seedtype..Class.)
+
+library(ggplot2)
+library(lattice)
+library(caret)
+library(rpart)
+
+size <- floor(0.75 * nrow(seeds))
+smpl <- sample(seq_len(nrow(seeds)), size = size)
+train <- seeds[smpl, ]
+test <- seeds[-smpl, ]
+
+#summary(seeds)
+
+ 
+tree <- rpart( Seedtype..Class. ~ . , data = train , method = 'class')
+print(tree)
+
+
+install.packages("rpart.plot")
+
+
+library(rpart.plot)
+rpart.plot(tree)
+
+
+install.packages("proxy")
+install.packages("e1071")
+
+
+prediction <- predict(tree, test, type = 'class')
+result <- table( test$Seedtype..Class. , prediction)
+confusionMatrix(result, mode = "prec_recall")
+
+
+
+
+
+
+
+
+seeds <- read.csv("D:\\Daneshga\\T8\\Amini\\Datasets\\Iris Alternatives\\Wheat Seeds Dataset\\Book1.csv")
+
+seeds$Seedtype..Class.[which(seeds$Seedtype..Class.==1)]="Kama"
+seeds$Seedtype..Class.[which(seeds$Seedtype..Class.==2)]="Rosa"
+seeds$Seedtype..Class.[which(seeds$Seedtype..Class.==3)]="Canadian"
+seeds$Seedtype..Class. = factor(seeds$Seedtype..Class.)
+
+library(ggplot2)
+library(lattice)
+library(caret)
+#library(rpart)
+library(e1071)
+
+size <- floor(0.75 * nrow(seeds))
+smpl <- sample(seq_len(nrow(seeds)), size = size)
+train <- seeds[smpl, ]
+test <- seeds[-smpl, ]
+
+#summary(seeds)
+
+
+bayes <- naiveBayes (Seedtype..Class. ~ . , data = train)
+bayes
+
+
+prediction <- predict(bayes, test, type = 'class')
+result <- table( test$Seedtype..Class. , prediction)
+confusionMatrix(result, mode = "prec_recall")
